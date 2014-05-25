@@ -1,0 +1,25 @@
+$LOAD_PATH << File.join(File.expand_path('.'), 'lib')
+require 'new_project'
+
+if ARGV.size != 1
+  puts "Usage: new_project <project_name_in_snake_case>"
+  fail "Invalid arguments" unless ARGV.size == 1
+end
+
+fail "Directory #{ARGV.first} already exists" if Dir.exists?(ARGV.first)
+
+project = NewProject::Project.new(ARGV.first)
+
+FileUtils.mkpath("#{project.snake_name}/bin")
+FileUtils.mkpath("#{project.snake_name}/lib/#{project.snake_name}")
+FileUtils.mkpath("#{project.snake_name}/spec/#{project.snake_name}")
+
+[
+ NewProject::Template.new(project, 'bin-run', 'bin/run.rb'),
+ NewProject::Template.new(project, 'gemfile', 'Gemfile'),
+ NewProject::Template.new(project, 'gitignore', '.gitignore'),
+ NewProject::Template.new(project, 'lib-project', "lib/#{project.snake_name}.rb"),
+ NewProject::Template.new(project, 'spec-helper', 'spec/spec_helper.rb')
+].each do |template|
+  template.save
+end
