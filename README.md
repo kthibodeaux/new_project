@@ -4,10 +4,17 @@ Makes a directory and skeleton project
 
 ## Installation
 
-    $ git clone git@github.com:kthibodeaux/new_project.git
-    $ cd new_project
-    $ gem build new_project.gemspec
-    $ gem install new_project-x.x.x.gem
+Add this line to your application's Gemfile:
+
+    gem 'new_project'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install 'new_project'
 
 ## Usage
 
