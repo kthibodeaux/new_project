@@ -19,7 +19,6 @@
 /.bundle/
 /lib/bundler/man/
 
-Gemfile.lock
 .ruby-version
 .ruby-gemset
 
