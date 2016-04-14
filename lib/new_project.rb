@@ -6,7 +6,7 @@ require 'fileutils'
 
 module NewProject
 
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
 
   def self.root
     File.expand_path('../..', __FILE__)
